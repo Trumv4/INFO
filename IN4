@@ -1,0 +1,29 @@
+# ==== THÔNG TIN TÀI KHOẢN (THAY DÒNG DƯỚI) ====
+GIT_USER="your-github-username"
+GIT_EMAIL="your-email@example.com"
+REPO_NAME="pham-anh-tu"
+FILE_NAME="index.html"
+HTML_URL="https://sandbox.openai.com/attachments/final/file/pham_anh_tu_hoanthien.html"  # Đổi thành link thực tế nếu cần
+
+# ==== CÀI GIT (NẾU CHƯA CÓ) ====
+sudo apt update && sudo apt install git wget -y
+
+# ==== CẤU HÌNH GIT ====
+git config --global user.name "$GIT_USER"
+git config --global user.email "$GIT_EMAIL"
+
+# ==== CLONE REPO TỪ GITHUB ====
+git clone https://github.com/$GIT_USER/$REPO_NAME.git
+cd $REPO_NAME
+
+# ==== TẢI FILE HTML TỪ OPENAI (HOẶC DÁN SẴN) ====
+wget -O $FILE_NAME "$HTML_URL"
+
+# ==== COMMIT VÀ PUSH ====
+git add $FILE_NAME
+git commit -m "🚀 Upload website cá nhân Phạm Anh Tú"
+git push origin main
+
+echo ""
+echo "✅ Xong! Bây giờ bạn hãy vào GitHub → Settings → Pages để bật GitHub Pages."
+echo "🔗 Link truy cập sẽ là: https://$GIT_USER.github.io/$REPO_NAME/"
